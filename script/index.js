@@ -5,6 +5,9 @@ const allCategories = async () => {
 
   const responseData = await petsData.json();
   showCategories(responseData.categories);
+  document.getElementById("status").style.display = "none";
+  document.getElementById("petsContainer").style.display = "block";
+  
 };
 
 const showCategories = (categories) => {
@@ -35,9 +38,14 @@ const petsLoad = async (categoriesName) => {
 };
 
 const displayPets = (pets) => {
+  if (pets.length < 1) {
+    document.getElementById("petsContainer").style.display = "none";
+    document.getElementById("status").style.display = "flex";
+  }
+
   pets.forEach((pet) => {
-    
     const petsContainer = document.getElementById("petsContainer");
+    petsContainer.innerHTML = "";
     const newDiv = document.createElement("div");
     console.log(newDiv);
     newDiv.innerHTML = ` 
