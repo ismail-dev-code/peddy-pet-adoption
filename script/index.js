@@ -7,8 +7,6 @@ const allCategories = async () => {
   showCategories(responseData.categories);
 };
 
-allCategories();
-
 const showCategories = (categories) => {
   const categoryBtns = document.getElementById("category-btns");
 
@@ -16,7 +14,7 @@ const showCategories = (categories) => {
     console.log(category);
     const catDiv = document.createElement("div");
     catDiv.innerHTML = `
-                   <button class="flex btn  hover:bg-[#0E7A81] hover:text-white">
+                   <button onclick="petsLoad('${category.category}')" class="flex btn hover:bg-[#0E7A81] hover:text-white">
         <img src="${category.category_icon}" alt="${category.category}" width="30" height="30" />
         ${category.category}
       </button>
@@ -26,4 +24,42 @@ const showCategories = (categories) => {
   }
 };
 
+const petsLoad = async (categoriesName) => {
+  // console.log(categoriesName);
+  const response = await fetch(
+    `https://openapi.programming-hero.com/api/peddy/category/${categoriesName}
+    `
+  );
+  const data = await response.json();
+  displayPets(data.data);
+};
 
+const displayPets = (pets) => {
+  pets.forEach((pet) => {
+    
+    const petsContainer = document.getElementById("petsContainer");
+    const newDiv = document.createElement("div");
+    console.log(newDiv);
+    newDiv.innerHTML = ` 
+                  <div class="card bg-base-100 w-96 shadow-sm">
+  <figure>
+    <img class="pt-4"
+      src=${pet.image}
+      alt="petImg" />
+  </figure>
+  <div class="py-3 px-5">
+    <h2 class="card-title">${pet.breed}</h2>
+    <p>${pet.pet_details}</p>
+    <div class="card-actions justify-end">
+      <button class="btn bg-[#0E7A81] text-white">Buy Now</button>
+    </div>
+  </div>
+</div>
+    `;
+    petsContainer.append(newDiv);
+  });
+};
+
+petsLoad("cat");
+
+allCategories();
