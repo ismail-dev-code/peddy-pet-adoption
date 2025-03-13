@@ -7,7 +7,6 @@ const allCategories = async () => {
   showCategories(responseData.categories);
   document.getElementById("status").style.display = "none";
   document.getElementById("petsContainer").style.display = "block";
-  
 };
 
 const showCategories = (categories) => {
@@ -28,13 +27,19 @@ const showCategories = (categories) => {
 };
 
 const petsLoad = async (categoriesName) => {
-  // console.log(categoriesName);
+  document.getElementById("status").style.display = "none";
+  document.getElementById("petsContainer").style.display = "block";
+  show("spinner");
+
   const response = await fetch(
     `https://openapi.programming-hero.com/api/peddy/category/${categoriesName}
     `
   );
   const data = await response.json();
-  displayPets(data.data);
+  if (data.data) {
+    displayPets(data.data);
+    makeHide("spinner");
+  }
 };
 
 const displayPets = (pets) => {
@@ -59,13 +64,36 @@ const displayPets = (pets) => {
     <h2 class="card-title">${pet.breed}</h2>
     <p>${pet.pet_details}</p>
     <div class="card-actions justify-end">
-      <button class="btn bg-[#0E7A81] text-white">Buy Now</button>
+      <button class="btn buy-now-btn bg-[#0E7A81] text-white">Buy Now</button>
     </div>
   </div>
 </div>
     `;
     petsContainer.append(newDiv);
   });
+  const allSelectBtn = document.getElementsByClassName("buy-now-btn");
+  for (let btn of allSelectBtn) {
+    btn.addEventListener("click", (event) => {
+      const title = event.target.parentNode.parentNode.childNodes[1].innerText;
+
+      const listContainer = document.getElementById("selected-container");
+      const newDiv = document.createElement("div");
+      // newDiv.classList.add("flex");
+      newDiv.innerHTML = `
+                    
+                    <h1>${title}</h1>
+                    <button class="btn bg-[#0E7A81] text-white">Successfully Added</button>
+      `;
+      listContainer.append(newDiv);
+    });
+  }
+};
+
+const makeHide = (id) => {
+  document.getElementById("spinner").style.display = "none";
+};
+const show = (id) => {
+  document.getElementById("spinner").style.display = "block";
 };
 
 petsLoad("cat");

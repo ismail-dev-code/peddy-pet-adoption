@@ -26,15 +26,29 @@
   </head>
   <body class="font-lato">
     <header>
-      <nav class="w-11/12 mx-auto flex justify-between items-center pt-5 pb-1.5 border-b-2 border-slate-100">
+      <nav
+        class="w-11/12 mx-auto flex justify-between items-center pt-5 pb-1.5 border-b-2 border-slate-100"
+      >
         <div class="logo flex gap-2 items-center">
           <div><img src="images/logo.webp" alt="" /></div>
           <h1 class="text-2xl font-extrabold cursor-pointer">Peddy</h1>
         </div>
         <div class="nav-btn opacity-0.7 flex gap-5">
-          <button class="hover:bg-[#0E7A81] hover:text-white cursor-pointer py-1 px-2 rounded-lg">Home</button>
-          <button class="hover:bg-[#0E7A81] hover:text-white cursor-pointer py-1 px-2 rounded-lg">Shop</button>
-          <button class="hover:bg-[#0E7A81] hover:text-white cursor-pointer py-1 px-2 rounded-lg">Contact</button>
+          <button
+            class="hover:bg-[#0E7A81] hover:text-white cursor-pointer py-1 px-2 rounded-lg"
+          >
+            Home
+          </button>
+          <button
+            class="hover:bg-[#0E7A81] hover:text-white cursor-pointer py-1 px-2 rounded-lg"
+          >
+            Shop
+          </button>
+          <button
+            class="hover:bg-[#0E7A81] hover:text-white cursor-pointer py-1 px-2 rounded-lg"
+          >
+            Contact
+          </button>
         </div>
         <div class="nav-profile">
           <img
@@ -45,38 +59,75 @@
         </div>
       </nav>
     </header>
+   
 
     <main>
-        <section>
-            <div class="hero-details w-11/12 mx-auto text-center flex flex-col items-center justify-center ">
-                <p class="text-slate-500 text-xl pt-10">Bringing Families Together ❤️‍🔥 
-                    </p>
-                    <h1 class="text-5xl font-bold py-4">Your Path to Adoption <br> Starts Here</h1>
-                    <p class="pb-8 text-slate-500">Welcome to our cat adoption website, where you can find your perfect companion! <br> By adopting, you're not only giving pets a loving home but also helping to reduce the number of animals in shelters. </p>
-                    <div><button class="btn text-base rounded-lg py-4 px-8 bg-[#0E7A81] text-white">View More</button></div>
-                    <div><img src="./images/pet.webp" alt=""></div>
-                    <div>
-                        <h2 class="text-3xl font-extrabold pb-4">Adopt  Your  Best Friend</h2>
-                        <p class="text-slate-500 pb-12">We're dedicated to finding loving homes for pets in need, offering <br> a safe and supportive environment for both adopters and our furry friends. </p>
-                    </div>
-            </div>
-        </section>
-        <section class="w-11/12 mx-auto">
-            <div id="category-btns" class="all-btns pb-8 flex gap-5 justify-center">
-                
-            </div>
-        </section>
-        
-        <div id="status" class="text-center mt-6 flex-col justify-center items-center">
-          <img class="" src="./images/error.webp" alt="no data found">
-          <h1 class="font-bold">No Information Available</h1>
-          <p class="text-slate-500">No birds available at the moment! We're working on adding new birds, <br> and they'll be available within a week. Please check back soon!</p>
-        </div>
-        <section class="mt-8 flex justify-center">
-          <div id="petsContainer" class="pets-container space-y-6">
-            
+      <section>
+        <div
+          class="hero-details w-11/12 mx-auto text-center flex flex-col items-center justify-center"
+        >
+          <p class="text-slate-500 text-xl pt-10">
+            Bringing Families Together ❤️‍🔥
+          </p>
+          <h1 class="text-5xl font-bold py-4">
+            Your Path to Adoption <br />
+            Starts Here
+          </h1>
+          <p class="pb-8 text-slate-500">
+            Welcome to our cat adoption website, where you can find your perfect
+            companion! <br />
+            By adopting, you're not only giving pets a loving home but also
+            helping to reduce the number of animals in shelters.
+          </p>
+          <div>
+            <button
+              class="btn text-base rounded-lg py-4 px-8 bg-[#0E7A81] text-white"
+            >
+              View More
+            </button>
           </div>
-        </section>
+          <div><img src="./images/pet.webp" alt="" /></div>
+          <div>
+            <h2 class="text-3xl font-extrabold pb-4">Adopt Your Best Friend</h2>
+            <p class="text-slate-500 pb-12">
+              We're dedicated to finding loving homes for pets in need, offering
+              <br />
+              a safe and supportive environment for both adopters and our furry
+              friends.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="w-11/12 mx-auto">
+        <div
+          id="category-btns"
+          class="all-btns pb-8 flex gap-5 justify-center"
+        > </div>
+      </section>
+      <ul id="selected-container" class="flex justify-center gap-3 text-center"></ul>
+
+      <div
+        id="status"
+        class="text-center mt-6 flex-col justify-center items-center"
+      >
+        <img class="" src="./images/error.webp" alt="no data found" />
+        <h1 class="font-bold">No Information Available</h1>
+        <p class="text-slate-500">
+          No birds available at the moment! We're working on adding new birds,
+          <br />
+          and they'll be available within a week. Please check back soon!
+        </p>
+      </div>
+      <div id="spinner" class="spinner text-center">
+        <span class="loading loading-dots loading-xs"></span>
+        <span class="loading loading-dots loading-sm"></span>
+        <span class="loading loading-dots loading-md"></span>
+        <span class="loading loading-dots loading-lg"></span>
+        <span class="loading loading-dots loading-xl"></span>
+      </div>
+      <section class="mt-8 flex justify-center">
+        <div id="petsContainer" class="pets-container space-y-6"></div>
+      </section>
     </main>
 
     <script src="./script/index.js"></script>
