@@ -6,14 +6,14 @@ const allCategories = async () => {
   const responseData = await petsData.json();
   showCategories(responseData.categories);
   document.getElementById("status").style.display = "none";
-  document.getElementById("petsContainer").style.display = "block";
+  document.getElementById("petsContainer").style.display = "grid";
 };
 
 const showCategories = (categories) => {
   const categoryBtns = document.getElementById("category-btns");
 
   for (let category of categories) {
-    console.log(category);
+    // console.log(category);
     const catDiv = document.createElement("div");
     catDiv.innerHTML = `
                    <button onclick="petsLoad('${category.category}')" class="flex btn hover:bg-[#0E7A81] hover:text-white">
@@ -28,7 +28,7 @@ const showCategories = (categories) => {
 
 const petsLoad = async (categoriesName) => {
   document.getElementById("status").style.display = "none";
-  document.getElementById("petsContainer").style.display = "block";
+  document.getElementById("petsContainer").style.display = "grid";
   show("spinner");
 
   const response = await fetch(
@@ -48,13 +48,13 @@ const displayPets = (pets) => {
     document.getElementById("status").style.display = "flex";
   }
 
+  const petsContainer = document.getElementById("petsContainer");
+  petsContainer.innerHTML = "";
   pets.forEach((pet) => {
-    const petsContainer = document.getElementById("petsContainer");
-    petsContainer.innerHTML = "";
     const newDiv = document.createElement("div");
     console.log(newDiv);
     newDiv.innerHTML = ` 
-                  <div class="card bg-base-100 w-96 shadow-sm">
+                  <div class="w-11/12 mx-auto card flex-1">
   <figure>
     <img class="pt-4"
       src=${pet.image}
@@ -64,7 +64,7 @@ const displayPets = (pets) => {
     <h2 class="card-title">${pet.breed}</h2>
     <p>${pet.pet_details}</p>
     <div class="card-actions justify-end">
-      <button class="btn buy-now-btn bg-[#0E7A81] text-white">Buy Now</button>
+      <button class="btn buy-now-btn bg-[#0E7A81] text-white">Status</button>
     </div>
   </div>
 </div>
@@ -82,7 +82,7 @@ const displayPets = (pets) => {
       newDiv.innerHTML = `
                     
                     <h1>${title}</h1>
-                    <button class="btn bg-[#0E7A81] text-white">Successfully Added</button>
+                    <button class="btn bg-[#0E7A81] text-white">Available</button>
       `;
       listContainer.append(newDiv);
     });
