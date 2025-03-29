@@ -99,3 +99,5 @@ const show = (id) => {
 petsLoad("cat");
 
 allCategories();
+
+document.getElementById('year').textContent = new Date().getFullYear();
